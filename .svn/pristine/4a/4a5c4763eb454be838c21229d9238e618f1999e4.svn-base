@@ -1,0 +1,18 @@
+package JUnitTesting;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import finalProject.model.CourseModel;
+
+public class CourseModelTest {
+
+	@Test
+	public void test_returnCourse() {
+		CourseModel course = new CourseModel("3024", "Software Development 1");
+		String expected = "CourseModel [title=Software Development 1, course_ID=3024]";
+		Assert.assertEquals(expected, course.toString());
+	}
+
+}

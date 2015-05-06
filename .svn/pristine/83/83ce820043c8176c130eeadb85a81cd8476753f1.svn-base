@@ -1,0 +1,193 @@
+package finalProject.model;
+
+import finalProject.Required;
+
+public class BookModel {
+	
+	private	String	isbn;
+	private String  course_ID;
+	private String  section_ID;
+	
+	
+	private String	author_ID;
+	private String	publisher_ID;
+	
+	private String	title;
+	private String	edition;
+	
+	private Required required;	
+	private boolean recommended;
+		
+	public BookModel(){}
+	
+	public BookModel( String isbn, String course, String section, 
+					  String auth, String pub,
+					  String title, int ed,
+					  int req, boolean rec ) {
+		
+		this.setIsbn( isbn );
+		this.setCourse_ID( course );
+		this.setSection_ID( section );
+		this.setAuthor_ID( auth );
+		this.setPublisher_ID( pub );
+		
+		this.setTitle( title );
+		
+		if(ed == 1){
+			this.setEdition("LATEST");
+		}
+		else {
+			this.setEdition( "ANY" );
+		}
+
+		
+		if(req == 1){
+			this.setRequired(Required.REQUIRED);
+		}
+		else{
+			this.setRequired( Required.OPTIONAL);
+		}
+		
+		this.setRecommended( rec );
+	}
+	
+	/**
+	 * @return the isbn
+	 */
+	public String getIsbn() {
+		return isbn;
+	}
+	/**
+	 * @param isbn the isbn to set
+	 */
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	/**
+	 * @return the author_ID
+	 */
+	public String getAuthor_ID() {
+		return author_ID;
+	}
+	/**
+	 * @param author_ID the author_ID to set
+	 */
+	public void setAuthor_ID(String author_ID) {
+		this.author_ID = author_ID;
+	}
+	/**
+	 * @return the publisher_ID
+	 */
+	public String getPublisher_ID() {
+		return publisher_ID;
+	}
+	/**
+	 * @param publisher_ID the publisher_ID to set
+	 */
+	public void setPublisher_ID(String publisher_ID) {
+		this.publisher_ID = publisher_ID;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the edition
+	 */
+	public String getEdition() {
+		return edition;
+	}
+	/**
+	 * @param edition the edition to set
+	 */
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	/**
+	 * @return the recommended
+	 */
+	public boolean isRecommended() {
+		return recommended;
+	}
+	/**
+	 * @param recommended the recommended to set
+	 */
+	public void setRecommended(boolean recommended) {
+		this.recommended = recommended;
+	}
+
+	/**
+	 * @return the required
+	 */
+	public Required getRequired() {
+		return required;
+	}
+
+	/**
+	 * @param required the required to set
+	 */
+	public void setRequired(Required required) {
+		this.required = required;
+	}
+
+	/**
+	 * @return the section_ID
+	 */
+	public String getSection_ID() {
+		return section_ID;
+	}
+
+	/**
+	 * @param section_ID the section_ID to set
+	 */
+	public void setSection_ID(String section_ID) {
+		this.section_ID = section_ID;
+	}
+
+	/**
+	 * @return the course_ID
+	 */
+	public String getCourse_ID() {
+		return course_ID;
+	}
+
+	/**
+	 * @param course_ID the course_ID to set
+	 */
+	public void setCourse_ID(String course_ID) {
+		this.course_ID = course_ID;
+	}
+
+	public String formatToString() {
+		String rec = "";
+		if(recommended)
+			rec = "Recommended";
+		else
+			rec = "";
+		return  isbn + " Author " + author_ID
+				+ ", Publisher " + publisher_ID + ", Title " + title
+				+ ", " + required
+				+ ", " + rec;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BookModel [isbn=" + isbn + ", course_ID=" + course_ID
+				+ ", section_ID=" + section_ID + ", author_ID=" + author_ID
+				+ ", publisher_ID=" + publisher_ID + ", title=" + title
+				+ ", edition=" + edition + ", required=" + required
+				+ ", recommended=" + recommended + "]";
+	}
+}

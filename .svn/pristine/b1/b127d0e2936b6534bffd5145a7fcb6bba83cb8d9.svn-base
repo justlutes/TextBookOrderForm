@@ -1,0 +1,85 @@
+package finalProject.model;
+
+public class InstructorModel {
+	private String instructor_ID;
+	private String password;
+	
+	private String name;
+	
+	private boolean admin;
+	
+	public InstructorModel(){};
+	
+	public InstructorModel( String id, String pw, String name, boolean is_admin ) {
+		setInstructor_ID( id );
+		setPassword( pw );
+		setName( name );
+		this.setAdmin( is_admin );
+	}
+	
+	/**
+	 * @return the instructor_ID
+	 */
+	public String getInstructor_ID() {
+		return instructor_ID;
+	}
+
+	/**
+	 * @param instructor_ID the instructor_ID to set
+	 */
+	public void setInstructor_ID(String instructor_ID) {
+		this.instructor_ID = instructor_ID;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the admin
+	 */
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	/**
+	 * @param admin the admin to set
+	 */
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "InstructorModel [instructor_ID=" + instructor_ID
+				+ ", password=" + password + ", name=" + name + ", admin="
+				+ admin + "]";
+	}
+}

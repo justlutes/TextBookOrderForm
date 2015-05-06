@@ -1,0 +1,33 @@
+package finalProject;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import finalProject.model.BookModel;
+import finalProject.model.ConnectionInfoModel;
+import finalProject.model.CourseModel;
+import finalProject.model.InstructorModel;
+
+public class testDatabase {
+
+	public static void main(String[] args) {
+		ConnectionInfoModel con = new ConnectionInfoModel();
+		String query = "SELECT instructor_PW FROM instructor WHERE instructor_ID = 1";
+
+		con.connect();
+		con.createStatement();
+		con.setQuery( query );
+		con.generateResultSet();
+		
+		try {
+			System.out.println( con.authenticate( "1", "boobs" ) );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		con.disconnect();
+	}
+
+}

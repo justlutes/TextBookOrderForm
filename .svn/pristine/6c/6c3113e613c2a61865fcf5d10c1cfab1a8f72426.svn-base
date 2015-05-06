@@ -1,0 +1,26 @@
+package JUnitTesting;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import finalProject.model.CourseModel;
+
+public class CourseModelTest {
+
+	@Test
+	public void test_returnCourse() {
+		CourseModel course = new CourseModel("3024", "Software Development 1");
+		assertEquals("3024",course.getCourse_ID());
+		
+		assertEquals("Software Development 1", course.getTitle());
+		
+		course.setTitle("Software Development 2");
+		assertEquals("Software Development 2", course.getTitle());
+		
+		course.setCourse_ID("007");
+		assertEquals("007",course.getCourse_ID());
+		
+	}
+
+}

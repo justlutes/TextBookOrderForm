@@ -1,0 +1,149 @@
+package finalProject.model;
+
+import java.util.ArrayList;
+
+public class RequisitionModel {
+	
+	private String instructor_ID;
+	private String course_ID;
+	
+	private ArrayList<String> sections;
+	private ArrayList<BookModel> books;
+	
+	private int expectedEnrollment;
+	
+	private String orderDate;
+	private String approvedDate;
+
+	public RequisitionModel() {}
+	
+	public RequisitionModel( String inst, String course, ArrayList<String> section,
+							 ArrayList<BookModel> books, int enroll ) {
+		this.setInstructor_ID( inst );
+		this.setCourse_ID( course );
+		
+		this.setSections( section );
+		this.setBooks( books );
+		
+		this.setExpectedEnrollment( enroll );
+	}
+	
+	public String toString() {
+		String thisObject = "********************\n" +
+						    "Instructor_ID: " + instructor_ID + "\n" +
+						    "Course_ID: " + course_ID + "\n" +
+						    "Sections: ";
+		
+							for( String temp: sections ){
+								thisObject += temp + ", ";
+							}
+							
+							thisObject += "\n";
+							thisObject += "******* Books ******\n";
+						    for( BookModel temp: books ) {
+						    	thisObject += temp.toString();
+						    }
+						    
+						    thisObject += expectedEnrollment + "\n";
+		return thisObject;
+	}
+	
+	/**
+	 * @return the instructor_ID
+	 */
+	public String getInstructor_ID() {
+		return instructor_ID;
+	}
+
+	/**
+	 * @param instructor_ID the instructor_ID to set
+	 */
+	public void setInstructor_ID(String instructor_ID) {
+		this.instructor_ID = instructor_ID;
+	}
+
+	/**
+	 * @return the course_ID
+	 */
+	public String getCourse_ID() {
+		return course_ID;
+	}
+
+	/**
+	 * @param course_ID the course_ID to set
+	 */
+	public void setCourse_ID(String course_ID) {
+		this.course_ID = course_ID;
+	}
+
+	/**
+	 * @return the sections
+	 */
+	public ArrayList<String> getSections() {
+		return sections;
+	}
+
+	/**
+	 * @param sections the sections to set
+	 */
+	public void setSections(ArrayList<String> sections) {
+		this.sections = sections;
+	}
+
+	/**
+	 * @return the texts
+	 */
+	public ArrayList<BookModel> getBooks() {
+		return books;
+	}
+
+	/**
+	 * @param texts the texts to set
+	 */
+	public void setBooks(ArrayList<BookModel> books) {
+		this.books = books;
+	}
+
+	/**
+	 * @return the expectedEnrollment
+	 */
+	public int getExpectedEnrollment() {
+		return expectedEnrollment;
+	}
+
+	/**
+	 * @param expectedEnrollment the expectedEnrollment to set
+	 */
+	public void setExpectedEnrollment(int expectedEnrollment) {
+		this.expectedEnrollment = expectedEnrollment;
+	}
+
+	/**
+	 * @return the orderDate
+	 */
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	/**
+	 * @param orderDate the orderDate to set
+	 */
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	/**
+	 * @return the approvedDate
+	 */
+	public String getApprovedDate() {
+		return approvedDate;
+	}
+
+	/**
+	 * @param approvedDate the approvedDate to set
+	 */
+	public void setApprovedDate(String approvedDate) {
+		this.approvedDate = approvedDate;
+	}
+
+}

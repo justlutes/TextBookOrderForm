@@ -1,0 +1,68 @@
+package finalProject;
+
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
+import finalProject.model.BookModel;
+import finalProject.model.ConnectionInfoModel;
+import finalProject.model.CourseModel;
+import finalProject.model.InstructorModel;
+import finalProject.model.RequisitionModel;
+import finalProject.view.LoginScreen;
+
+public class Main {
+	
+	private JFrame frmLoginScreen;
+
+	public static void main(String[] args) {
+		BookModel book1 = new BookModel(
+				"1234A", "Bob Smith", "White Press",
+				"Programming", 1,
+				1, false );
+		BookModel book2 = new BookModel(
+				"2345B", "Pablo Peterson", "Red Press",
+				"More Programming", 1,
+				1, false );
+		
+//		InstructorModel instructor1 = new InstructorModel(
+//				"1", "boobs", "Janira Rodriguez", false );
+//		InstructorModel instructor2 = new InstructorModel(
+//				"2", "boobs", "Bob Smith", true );
+		
+		CourseModel course1 = new CourseModel( "1234", "Comp 101" );
+		CourseModel course2 = new CourseModel( "3456", "Soft Dev 1" );
+		
+		ArrayList<String> sections = new ArrayList<String>();
+		sections.add( "Section1" );
+		sections.add( "Section2" );
+		sections.add( "Section3" );
+		sections.add( "Section4" );
+		
+		ArrayList<BookModel> books = new ArrayList<BookModel>();
+		books.add( book1 );
+		books.add( book2 );
+				
+		RequisitionModel request1 = new RequisitionModel( 
+				"1234", "UML123", sections, books, 24 );
+		RequisitionModel request2 = new RequisitionModel(
+				"2345", "ENC123", sections, books, 50 );
+		
+		//ConnectionInfoModel con = new ConnectionInfoModel();
+		
+		//con.connect();
+		
+		System.out.println( book1.toString() );
+		System.out.println( request1.toString() );
+		System.out.println( request2.toString() );
+		
+		System.out.println( "No errors, yet." );
+		
+		//Starts the GUI
+		{
+		LoginScreen window = new LoginScreen();
+		window.frmLoginScreen.setVisible(true);
+		}
+	}
+
+}

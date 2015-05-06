@@ -1,0 +1,19 @@
+package JUnitTesting;
+
+import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import finalProject.model.InstructorModel;
+
+public class InstructorModelTest {
+
+	@Test
+	public void test_returnInstructor() {
+		InstructorModel instructor = new InstructorModel("12345", "Password", "Prof. S", false);
+		String expected = "InstructorModel [instructor_ID=12345, password=Password, name=Prof. S, admin=false]";
+		Assert.assertEquals(expected, instructor.toString());
+	}
+
+}

@@ -1,0 +1,174 @@
+package finalProject.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectionInfoModel {
+	
+//  This stuff is all hard-coded for testing.
+//	final String driver = "jdbc:oracle:thin";
+//	final String listener = "xe";
+//	final String dbURL = driver + ":" + "@" + address + ":" + port + ":" + listener;
+	
+	final String driver 	= "jdbc:mysql";
+	final String address 	= "doubledproductions.org";
+	final String port 		= "3306";
+	final String dbname 	= "final_project";
+	final String username 	= "team9";
+	final String password 	= "boobs";
+
+	final String dbURL = driver + ":" + "//" + address + ":" + port + "/" + dbname;
+	
+	private Connection con;
+	private Statement statement;
+	private ResultSet rs;
+	private String query;
+	
+	public ConnectionInfoModel(){
+		this.connect();
+		this.createStatement();
+	}
+	
+	/**
+	 * @return the connection to the database
+	 */
+	public void connect() {
+		System.out.println( "Attempting connection..." );
+		try {
+			setCon( DriverManager.getConnection( getDbURL(), getUsername(), getPassword() ) );
+			System.out.println( "Connection successful!" );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//Disconnect from the database
+	public void disconnect() {
+		System.out.println( "Disconnecting from database..." );
+		if( con != null ) {
+			try {
+				con.close();
+				System.out.println( "Disconnect successful!" );
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void createStatement(){
+		System.out.println( "Creating statement...");
+		try {
+			setStatement( con.createStatement() );
+			System.out.println( "Statement creation successful!" );
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void generateResultSet() {
+		try {
+			setRs( getStatement().executeQuery( getQuery() ) );
+			System.out.println( "Query Executed.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	/**
+	 * @return the dbURL
+	 */
+	public String getDbURL() {
+		return dbURL;
+	}
+	/**
+	 * @return the driver
+	 */
+	public String getDriver() {
+		return driver;
+	}
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @return the port
+	 */
+	public String getPort() {
+		return port;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @return the con
+	 */
+	public Connection getCon() {
+		return con;
+	}
+
+	/**
+	 * @param con the con to set
+	 */
+	public void setCon(Connection con) {
+		this.con = con;
+	}
+
+	/**
+	 * @return the statement
+	 */
+	public Statement getStatement() {
+		return statement;
+	}
+
+	/**
+	 * @param statement the statement to set
+	 */
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+
+	/**
+	 * @return the rs
+	 */
+	public ResultSet getRs() {
+		return rs;
+	}
+
+	/**
+	 * @param rs the rs to set
+	 */
+	public void setRs(ResultSet rs) {
+		this.rs = rs;
+	}
+
+	/**
+	 * @return the query
+	 */
+	public String getQuery() {
+		return query;
+	}
+
+	/**
+	 * @param query the query to set
+	 */
+	public void setQuery(String query) {
+		this.query = query;
+	}
+}
